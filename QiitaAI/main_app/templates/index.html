@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習ロードマップ生成</title>
+
+     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+</head>
+</head>
+<body>
+    <h1>学習ロードマップを生成</h1>
+    <p>タグで記事を検索して、AIがあなた専用のカリキュラムを作成します。</p>
+    <br>
+    
+    <form action="surch" method="post">
+        <div class="section1">
+            <p>検索タグ（最大５つ）</p>
+            <input type="text" name="tag" class="tag_form" value="タグを入力してEnter(例:Python)">
+        </div>
+        <div class="section2">
+            <p>学習の目標や要望</p>
+            <input type="text" name="request_message" class="request_mes">
+            <button type="submit" class="submit_btn" id="submit_btn">
+                ✨ロードマップを作成
+            </button>
+        </div>
+    </form>
+    {% if output %}
+        <pre>{{ output }}</pre>
+    {% endif %}
+
+</body>
+</html>
