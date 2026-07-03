@@ -10,26 +10,24 @@
 </head>
 </head>
 <body>
-    <h1>学習ロードマップを生成</h1>
-    <p>タグで記事を検索して、AIがあなた専用のカリキュラムを作成します。</p>
-    <br>
-    
-    <form action="surch" method="post">
-        <div class="section1">
+    <div class="container">
+        <h1>学習ロードマップを生成</h1>
+        <p>タグで記事を検索して、AIがあなた専用のカリキュラムを作成します。</p>
+        <br> 
+    <section class="upload-section">
+        <form action="surch" method="post">
             <p>検索タグ（最大５つ）</p>
-            <input type="text" name="tag" class="tag_form" value="タグを入力してEnter(例:Python)">
-        </div>
-        <div class="section2">
+            <div class="text-area"><input type="text" name="tag" class="tag_form" value="タグを入力してEnter(例:Python)"></div>
             <p>学習の目標や要望</p>
             <input type="text" name="request_message" class="request_mes">
-            <button type="submit" class="submit_btn" id="submit_btn">
-                ✨ロードマップを作成
-            </button>
-        </div>
-    </form>
+        <button type="submit" class="submit_btn" id="submit_btn">
+            ✉︎Send
+        </button>
+        </form>
+    </section>
     {% if output %}
         <pre>{{ output }}</pre>
     {% endif %}
-
+    </div>
 </body>
 </html>

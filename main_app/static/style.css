@@ -1,33 +1,64 @@
-body {
-    background: #ffc0cb;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.section1 {
+body {
     margin-top: 20px;
+    background: #0a0a0b;
+    color: #e8e8f0;
+    font-family: 'Syne', sans-serif;
+}
+
+.container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.upload-section {
+    margin: 48px 0;
 }
 
 .tag_form {
-    width: 90%;
-    padding: 20px;
-    border-radius: 12px;
+    border: 1.5px dashed #2a2a30;
+    border-radius: 16px;
+    padding: 50px 400px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #111113;
+    color: #e8e8f0;
+    overflow: hidden;
 }
 
-.section2 {
-    margin-top: 20px;
-}
-.request_mes{
-    width: 90%;
-    padding: 20px;
-    border-radius: 12px;
+.request_mes {
+    border: 1.5px dashed #2a2a30;
+    border-radius: 16px;
+    padding: 50px 400px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #111113;
+    color: #e8e8f0;
+    overflow: hidden;
 }
 
 .submit_btn {
-    width: 100%;
-    padding: 18px;
     border: none;
-    border-radius: 12px;
+    border-radius: 16px;
+    background: #00ff88;
+    margin-top: 20px;
+    padding: 20px;
     font-size: 15px;
+    font-weight: 700;
     letter-spacing: 0.5px;
-    margin-top: 16px;
-
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
+
+.submit_btn:hover {
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
+    transform: translateY(-1px);
+}
+
