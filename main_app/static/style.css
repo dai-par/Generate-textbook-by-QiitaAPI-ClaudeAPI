@@ -62,3 +62,55 @@ body {
     transform: translateY(-1px);
 }
 
+.loader-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+}
+
+.loader {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.loader span {
+    position: absolute;
+    border: 2px solid #00ff88;
+    width: 100%;
+    height: 100%;
+    animation: animate 5s linear infinite;
+}
+
+.loader span:nth-child(2) {
+    animation-direction: reverse;
+}
+
+.loader span:nth-child(3) {
+    animation-delay: 3s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loader h2 {
+    color: #e8e8f0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.loaded {
+    opacity: 0;
+    transition: all 0.3s;
+}
+
