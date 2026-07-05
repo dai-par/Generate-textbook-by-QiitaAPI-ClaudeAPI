@@ -79,3 +79,10 @@ body {
     border-top-color: rgb(255, 255, 255);
     animation: spin 1s infinite linear;
 }
+
+.outputfield {
+    margin-bottom: 100px;
+    background: #111113;
+    border: 1.5px dashed #2a2a30;
+    border-radius: 16px;
+}
