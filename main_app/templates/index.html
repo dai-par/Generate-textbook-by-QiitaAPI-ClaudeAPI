@@ -29,23 +29,15 @@
         <pre>{{ output }}</pre>
     {% endif %}
     </div>
-    <div class="loader-body">
-        <div class="loader">
-            <span></span>
-            <span></span>
-            <span></span>
-            <h2>loading...</h2>
-        </div>
-    </div>
 
     <script>
-        window.onload = function() {
+        let btn = document.querySelector(".submit_btn");
+        btn.addEventListener("click", () => {
+            btn.innerHTML = '<div class="loading"></div>'
             setTimeout(() => {
-                const loader = document.querySelector(".loader")
-                loader.classList.add("loaded")
-
-            }, 1300);
-        };
+                btn.innerText = "完了"
+            }, 3000)
+        });
     </script>
 </body>
 </html>
