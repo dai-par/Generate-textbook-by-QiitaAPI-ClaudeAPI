@@ -7,6 +7,8 @@ import os
 
 app = Flask(__name__)
 
+error_mes = "出力に失敗しました。入力内容を確認してください。"
+
 @app.route('/')
 def index():
     return render_template(
@@ -17,10 +19,14 @@ def index():
 def surch():
     tags = request.form.get("tag").split()
     request_message = request.form.get("request_message")
-    query = "".join([f"tag:{tag}" for tag in tags])
+    query = " ".join([f"tag:{tag}" for tag in tags])
 
-    print(tags)
-    print(request_message)
+    if not query:
+        output = error_mes
+        render_template(
+            'index.html',
+            output = output
+        )
 
     url = f"https://qiita.com/api/v2/items"
     params = {
@@ -33,15 +39,41 @@ def surch():
     response = requests.get(url, params=params)
     articles = response.json()
 
+    print(articles)
+
     titles = []
     urls = []
+    bodys = []
 
     for article in articles:
         titles.append(article['title'])
         urls.append(article['url'])
+        # bodys.append(article['body'])
     
     title_query = "".join([f"title:{title}" for title in titles])
     url_query = "".join([f"url:{url}" for url in urls])
+    # body_query = "".join([f"body:{body}" for body in bodys])
+
+    if not title_query:
+        output = error_mes
+        return render_template(
+            'index.html',
+            output = output
+        )
+    
+    elif not url_query:
+        output = error_mes
+        return render_template(
+            'index.html',
+            output = output
+        )
+    
+    # elif not body_query:
+    #     output = error_mes
+    #     return render_template(
+    #         'index.html',
+    #         output = output
+    #     )
 
     load_dotenv()
 
@@ -51,10 +83,10 @@ def surch():
     
     message = client.messages.create(
         model='claude-sonnet-4-6',
-        max_tokens=4096,
+        max_tokens=5000,
         messages = [{
             "role":"user",
-            "content":f"titleとurlの一覧からピックアップして要望に沿った教材とロードマップを作成してください\n title:{title_query}\n url:{url_query}\n {request_message}"
+            "content":f"titleとurlの一覧からピックアップして要望に沿った教材とロードマップをHTML記述で作成してください（urlをaタグで囲って出力等）\n title:{title_query}\n url:{url_query}\n {request_message}"
         }]
     )
 

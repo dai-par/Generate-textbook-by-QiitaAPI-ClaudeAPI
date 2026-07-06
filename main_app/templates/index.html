@@ -17,16 +17,16 @@
     <section class="upload-section">
         <form action="surch" method="post">
             <p>検索タグ（最大５つ）</p>
-            <div class="text-area"><input type="text" name="tag" class="tag_form" value="タグを入力してEnter(例:Python)"></div>
+            <div class="text-area"><input type="text" name="tag" class="tag_form" placeholder="タグを入力してEnter(例:Python)" required></div>
             <p>学習の目標や要望</p>
-            <input type="text" name="request_message" class="request_mes">
+            <input type="text" name="request_message" class="request_mes" required>
         <button type="submit" class="submit_btn" id="submit_btn">
-            ✉︎Send
+           {% if output %}完了{% else %}✉︎Send{% endif %}
         </button>
         </form>
     </section>
     {% if output %}
-        <pre class="outputfield">{{ output }}</pre>
+        <pre class="outputfield">{{ output | safe }}</pre>
     {% endif %}
     </div>
 
@@ -34,9 +34,6 @@
         let btn = document.querySelector(".submit_btn");
         btn.addEventListener("click", () => {
             btn.innerHTML = '<div class="loading"></div>'
-            setTimeout(() => {
-                btn.innerText = "完了"
-            }, 3000)
         });
     </script>
 </body>
