@@ -95,3 +95,10 @@ body {
     border: 1.5px dashed #2a2a30;
     border-radius: 16px;
 }
+
+.next_container {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+}

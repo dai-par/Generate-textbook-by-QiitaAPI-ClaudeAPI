@@ -96,3 +96,9 @@ def surch():
         "index.html",
         output = output
     )
+
+@app.route('/next', methods=['POST'])
+def next():
+    return render_template(
+        'index_next.html'
+    )

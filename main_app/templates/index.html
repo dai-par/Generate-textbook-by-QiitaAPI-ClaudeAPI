@@ -14,20 +14,30 @@
         <h1>学習ロードマップを生成</h1>
         <p>タグで記事を検索して、AIがあなた専用のカリキュラムを作成します。</p>
         <br> 
-    <section class="upload-section">
-        <form action="surch" method="post">
-            <p>検索タグ（最大５つ）</p>
-            <div class="text-area"><input type="text" name="tag" class="tag_form" placeholder="タグを入力してEnter(例:Python)" required></div>
-            <p>学習の目標や要望</p>
-            <input type="text" name="request_message" class="request_mes" required>
-        <button type="submit" class="submit_btn" id="submit_btn">
-           {% if output %}完了{% else %}✉︎Send{% endif %}
-        </button>
-        </form>
-    </section>
-    {% if output %}
-        <pre class="outputfield">{{ output | safe }}</pre>
-    {% endif %}
+        <section class="upload-section">
+            <form action="surch" method="post">
+                <p>検索タグ（最大５つ）</p>
+                <div class="text-area"><input type="text" name="tag" class="tag_form" placeholder="タグを入力してEnter(例:Python)" required></div>
+                <p>学習の目標や要望</p>
+                <input type="text" name="request_message" class="request_mes" required>
+            <button type="submit" class="submit_btn" id="submit_btn">
+            {% if output %}完了{% else %}✉︎Send{% endif %}
+            </button>
+            </form>
+        </section>
+        {% if output %}
+            <div class="outputfield">{{ output | safe }}</div>
+        {% endif %}
+    </div>
+
+    <div class="next_container">
+        <form action="next" method="post">
+            {% if output %}
+            <button type="submit" class="submit_btn">
+                つづきを見る
+            </button>
+            {% endif %}
+        </form>     
     </div>
 
     <script>
